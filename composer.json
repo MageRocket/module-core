@@ -1,0 +1,20 @@
+{
+  "name": "magerocket/module-core",
+  "version": "1.0.0",
+  "description": "MageRocket Core",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageRocket\\Core\\": ""
+    }
+  }
+}

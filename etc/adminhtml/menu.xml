@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+  ~  @author MageRocket
+  ~  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+  ~  @link https://magerocket.com/
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MageRocket_Core::menu" title="MageRocket" translate="title" module="MageRocket_Core" sortOrder="40" resource="MageRocket_Core::menu"/>
+        <add id="MageRocket_Core::documentation" title="Documentation" module="MageRocket_Core" sortOrder="1" resource="MageRocket_Core::documentation" parent="MageRocket_Core::menu"/>
+        <add id="MageRocket_Core::guides" title="User Guides" module="MageRocket_Core" sortOrder="5" action="mrcore/index/guides" resource="MageRocket_Core::guides" parent="MageRocket_Core::documentation"/>
+    </menu>
+</config>

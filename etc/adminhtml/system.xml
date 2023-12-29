@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+  ~  @author MageRocket
+  ~  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+  ~  @link https://magerocket.com/
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magerocket_extensions" class="magerocket" translate="label" sortOrder="300">
+            <label></label>
+        </tab>
+        <section id="magerocket" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Information</label>
+            <tab>magerocket_extensions</tab>
+            <resource>MageRocket_Core::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="menu" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Menu</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If yes, menu will be displayed on the admin navigation.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

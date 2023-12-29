@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+  ~  @author MageRocket
+  ~  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+  ~  @link https://magerocket.com/
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magerocket>
+            <general>
+                <menu>1</menu>
+            </general>
+        </magerocket>
+    </default>
+</config>
