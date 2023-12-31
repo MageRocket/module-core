@@ -28,9 +28,9 @@ class Information extends Fieldset
     protected bool $allowFeatureRequest = true;
 
     /**
-     * @var string|bool $userGuide
+     * @var $userGuide
      */
-    protected string|bool $userGuide = false;
+    protected $userGuide = false;
 
     /**
      * @var string $content
