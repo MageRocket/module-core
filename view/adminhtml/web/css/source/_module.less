@@ -4,43 +4,6 @@
  *  @link https://magerocket.com/
  */
 
-#menu-magerocket-core-menu {
-  .submenu-group-title {
-    display: inline-block;
-  }
-  .submenu-title{
-    background-image: url('@{baseDir}MageRocket_Core/images/headerLogo.svg');
-    background-size: 190px 35px;
-    width: 206px;
-    height: 35px;
-    background-repeat: no-repeat;
-    margin-bottom: unset;
-    font-size: 0;
-  }
-}
-
-.admin__menu #menu-magerocket-core-menu > a:before {
-  content: '';
-  font-size: 2.4rem;
-  display: block;
-  position: relative;
-  top: -0.3rem;
-  width: 55px;
-  height: 55px;
-  background: url('@{baseDir}MageRocket_Core/images/menuLogo.svg') center/55px 55px no-repeat;
-  margin: 0 auto;
-}
-
-// Extension Tab
-.magerocket .title:before {
-  background-image: url('@{baseDir}MageRocket_Core/images/tabLogo.svg');
-  background-size: 151px 30px;
-  display: inline-block;
-  width: 245px;
-  height: 30px;
-  content: "Extensions";
-  text-align: end;
-  font-weight: 800;
-  padding-top: 7px;
-  background-repeat: no-repeat;
-}
+@import 'module/_variables';
+@import 'module/_extensions';
+@import 'module/_menu';

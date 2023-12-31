@@ -4,7 +4,8 @@
   "description": "MageRocket Core",
   "type": "magento2-module",
   "require": {
-    "magento/framework": "*"
+    "magento/framework": "*",
+    "guzzlehttp/guzzle": "^7.0"
   },
   "license": [
     "Proprietary"

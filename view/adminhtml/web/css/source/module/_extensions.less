@@ -1,0 +1,76 @@
+/*
+ *  @author MageRocket
+ *  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+ *  @link https://magerocket.com/
+ */
+
+& when (@media-common = true) {
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .magerocket .title:before {
+        background-image: @magerocket__tabs-logo;
+        background-size: 151px 30px;
+        display: inline-block;
+        width: 245px;
+        height: 30px;
+        content: "Extensions";
+        text-align: end;
+        font-weight: 800;
+        padding-top: 7px;
+        background-repeat: no-repeat;
+    }
+
+    a[id*='magerocket_information'] {
+        display: none !important;
+    }
+
+    .magerocket-button {
+        background: @magerocket__button__color;
+        border-radius: 4px;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1.25px;
+        margin-right: 25px;
+        padding: 13px 27px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: opacity .3s ease-in-out;
+    }
+
+    .magerocket-button:hover {
+        color: white;
+        text-decoration: none;
+        opacity: .8;
+    }
+
+    a.btn-guide.magerocket-button::before {
+        content: "";
+        background: @magerocket__guide_icon;
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-guide > span {
+        margin-left: 25px;
+    }
+
+    .magerocket-block-container {
+        margin-top: 15px;
+        .module-version.last-version {
+            color: @magerocket__module-last-version__color;
+        }
+
+        .message.success {
+            background-color: @magerocket__message-success__color;
+        }
+
+        .magerocket-actions {
+            & {
+                align-items: center;
+                display: flex;
+                margin-top: 25px;
+            }
+        }
+    }
+}

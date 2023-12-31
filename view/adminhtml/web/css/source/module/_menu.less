@@ -1,0 +1,34 @@
+/*
+ *  @author MageRocket
+ *  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+ *  @link https://magerocket.com/
+ */
+
+& when (@media-common = true) {
+    #menu-magerocket-core-menu {
+        .submenu-group-title {
+            display: inline-block;
+        }
+        .submenu-title{
+            background-image: @magerocket__header-logo;
+            background-size: 190px 35px;
+            width: 206px;
+            height: 35px;
+            background-repeat: no-repeat;
+            margin-bottom: unset;
+            font-size: 0;
+        }
+    }
+
+    .admin__menu #menu-magerocket-core-menu > a:before {
+        content: '';
+        font-size: 2.4rem;
+        display: block;
+        position: relative;
+        top: -0.3rem;
+        width: 55px;
+        height: 55px;
+        background: @magerocket__menu-logo;
+        margin: 0 auto;
+    }
+}
