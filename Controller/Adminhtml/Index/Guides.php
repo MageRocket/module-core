@@ -1,7 +1,7 @@
 <?php
 /**
  *  @author MageRocket
- *  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+ *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
  *  @link https://magerocket.com/
  */
 
@@ -19,7 +19,7 @@ class Guides extends Action
     public function execute()
     {
         $this->_response->setRedirect(
-            'https://docs.magerocket.com/'
+            'https://docs.magerocket.com/?utm_source=sidebar&utm_medium=link&utm_content=user-guide'
         );
     }
 }

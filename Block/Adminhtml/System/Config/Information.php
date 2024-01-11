@@ -1,7 +1,7 @@
 <?php
 /**
  *  @author MageRocket
- *  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+ *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
  *  @link https://magerocket.com/
  */
 
@@ -61,9 +61,8 @@ class Information extends Fieldset
 
     /**
      * getUserGuide
-     * @return bool|string
      */
-    public function getUserGuide(): bool|string
+    public function getUserGuide()
     {
         return $this->userGuide;
     }

@@ -10,29 +10,29 @@ namespace MageRocket\Core\Block\Adminhtml\System\Config\Form\Field;
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\Module\PackageInfoFactory;
+use MageRocket\Core\Model\ExtensionProvider;
 
 /**
  * Backend system config datetime field renderer
  */
-class Version extends Field
+class LatestVersion extends Field
 {
     /**
-     * @var PackageInfoFactory $packageInfoFactory
+     * @var ExtensionProvider $extensionProvider
      */
-    protected PackageInfoFactory $packageInfoFactory;
+    protected ExtensionProvider $extensionProvider;
 
     /**
      * @param Context $context
-     * @param PackageInfoFactory $packageInfoFactory
+     * @param ExtensionProvider $extensionProvider
      * @param array $data
      */
     public function __construct(
         Context $context,
-        PackageInfoFactory $packageInfoFactory,
+        ExtensionProvider $extensionProvider,
         array $data = []
     ) {
-        $this->packageInfoFactory = $packageInfoFactory;
+        $this->extensionProvider = $extensionProvider;
         parent::__construct($context, $data);
     }
 
@@ -43,8 +43,8 @@ class Version extends Field
     protected function _getElementHtml(AbstractElement $element)
     {
         $originalData = $element->getOriginalData();
-        $packageInfo = $this->packageInfoFactory->create();
-        $version = $packageInfo->getVersion($originalData['module_name']);
+        $moduleData = $this->extensionProvider->checkModuleUpdates($originalData['module_name']);
+        $version = $moduleData['version'];
         return "<strong>$version</strong>";
     }
 

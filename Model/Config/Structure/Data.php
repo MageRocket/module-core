@@ -1,13 +1,14 @@
 <?php
 /**
  *  @author MageRocket
- *  @copyright Copyright (c) 2023 MageRocket (https://magerocket.com/)
+ *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
  *  @link https://magerocket.com/
  */
 
 namespace MageRocket\Core\Model\Config\Structure;
 
 use Magento\Config\Model\Config\Structure\Data as StructureData;
+use MageRocket\Core\Block\Adminhtml\System\Config\Form\Field\LatestVersion;
 use MageRocket\Core\Block\Adminhtml\System\Config\Form\Field\Version;
 use MageRocket\Core\Helper\Data as Helper;
 
@@ -36,6 +37,7 @@ class Data
      */
     public function beforeMerge(StructureData $object, array $config)
     {
+        return [$config];
         if (!isset($config['config']['system'])) {
             return [$config];
         }
@@ -53,7 +55,7 @@ class Data
 
             // Check Section
             [$vendor, $module] = explode('_', $module);
-            $moduleSectionId = 'mr'.strtolower($module);
+            $moduleSectionId = 'magerocket_'.strtolower($module);
             $sectionsKeys = array_keys($config['config']['system']['sections']);
             if(!in_array($moduleSectionId, $sectionsKeys)){
                 $config['config']['system']['sections'][$moduleSectionId] = $this->addSection($module, $moduleSectionId, $position++);
@@ -137,6 +139,13 @@ class Data
             'type'           => 'label',
             'label'          => __('Version Installed'),
             'frontend_model' => Version::class,
+        ];
+
+        // Latest Version
+        $fields['lastVersion'] = [
+            'type'           => 'label',
+            'label'          => __('Latest Version'),
+            'frontend_model' => LatestVersion::class,
         ];
 
         // Return Fields
