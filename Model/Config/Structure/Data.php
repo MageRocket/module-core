@@ -37,13 +37,13 @@ class Data
      */
     public function beforeMerge(StructureData $object, array $config)
     {
-        return [$config];
         if (!isset($config['config']['system'])) {
             return [$config];
         }
 
         // Get MageRocket Modules
         $modulesMageRocket = $this->helper->getMageRocketModuleList();
+        $modulesProcessed = [];
 
         // Check if the module sector exists
         $position = 2;
@@ -54,11 +54,12 @@ class Data
             }
 
             // Check Section
-            [$vendor, $module] = explode('_', $module);
-            $moduleSectionId = 'magerocket_'.strtolower($module);
+            [$vendor, $moduleName] = explode('_', $module);
+            $moduleSectionId = strtolower($module);
+            $modulesProcessed[$moduleSectionId] = $module;
             $sectionsKeys = array_keys($config['config']['system']['sections']);
             if(!in_array($moduleSectionId, $sectionsKeys)){
-                $config['config']['system']['sections'][$moduleSectionId] = $this->addSection($module, $moduleSectionId, $position++);
+                $config['config']['system']['sections'][$moduleSectionId] = $this->addSection($moduleName, $moduleSectionId, $position++);
             }
         }
 
@@ -66,18 +67,12 @@ class Data
         $sections = $config['config']['system']['sections'];
         foreach ($sections as $sectionId => $section) {
             if (isset($section['tab']) && ($section['tab'] === 'magerocket_extensions') && ($section['id'] !== 'magerocket')) {
-                foreach ($modulesMageRocket as $moduleName) {
-                    $dynamicGroups = $this->getDynamicConfigGroups($moduleName, $section['id']);
+                if(!isset($config['config']['system']['sections'][$sectionId]['children'])){
+                    $dynamicGroups = $this->getDynamicConfigGroups($modulesProcessed[$section['id']],$section['id']);
                     if (!empty($dynamicGroups)) {
-                        if(isset($config['config']['system']['sections'][$sectionId]['children'])){
-                            // Append Group
-                            $config['config']['system']['sections'][$sectionId]['children'] = $dynamicGroups + $section['children'];
-                        } else {
-                            // Add Group
-                            $config['config']['system']['sections'][$sectionId]['children'] = $dynamicGroups;
-                        }
+                        // Add Group
+                        $config['config']['system']['sections'][$sectionId]['children'] = $dynamicGroups;
                     }
-                    break;
                 }
             }
         }
@@ -96,8 +91,8 @@ class Data
         $fieldsetTemplate = [
             'type'          => 'text',
             'showInDefault' => '1',
-            'showInWebsite' => '0',
-            'showInStore'   => '0',
+            'showInWebsite' => '1',
+            'showInStore'   => '1',
             'sortOrder'     => 1,
             'module_name'   => $moduleName,
             'validate'      => 'required-entry',
@@ -116,8 +111,8 @@ class Data
                 'id'            => 'module',
                 'label'         => __('Module Information'),
                 'showInDefault' => '1',
-                'showInWebsite' => '0',
-                'showInStore'   => '0',
+                'showInWebsite' => '1',
+                'showInStore'   => '1',
                 '_elementType'  => 'group',
                 'path'          => $sectionName,
                 'children'      => $fields,

@@ -44,7 +44,7 @@ class LatestVersion extends Field
     {
         $originalData = $element->getOriginalData();
         $moduleData = $this->extensionProvider->checkModuleUpdates($originalData['module_name']);
-        $version = $moduleData['version'];
+        $version = $moduleData['version'] ?? '1.0.0';
         return "<strong>$version</strong>";
     }
 

@@ -82,6 +82,7 @@ class InformationTab implements ObserverInterface
     private function generateBlockContent(): string
     {
         $html = '<div class="magerocket-block-container">';
+        $html .= $this->showModuleMode();
         $html .= $this->showVersionInfo();
         $html .= $this->getMageRocketActions();
         $html .= '</div>';
@@ -156,7 +157,7 @@ class InformationTab implements ObserverInterface
     private function getFeatureButton(): string
     {
         $featureLink = $this->getLinkSeo(self::FEATURE_LINK, 'module_%s');
-        return vsprintf(self::MAGEROCKET_BUTTON, [$featureLink,'',__("Request New Feature")]);
+        return vsprintf(self::MAGEROCKET_BUTTON, [$featureLink,'btn-feature',__("Request New Feature")]);
     }
 
     /**
@@ -200,6 +201,25 @@ class InformationTab implements ObserverInterface
     {
         $data = $this->moduleInfoProvider->getModuleInfo($this->getModuleCode());
         return $data['version'] ?? null;
+    }
+
+    /**
+     * showModuleMode
+     * @return string
+     */
+    protected function showModuleMode()
+    {
+        $data = $this->moduleInfoProvider->getModuleInfo($this->getModuleCode());
+        $moduleMode = $data['extra']['dev'] ?? false;
+        $html = "";
+        if($moduleMode){
+            $html .= '<div class="magerocket-module-info">';
+            $html .= '<span class="upgrade-error message message-warning">';
+            $html .= __('<b>ATTENTION</b>: The installed module corresponds to a development version.');
+            $html .= '</span>';
+            $html .= '</div>';
+        }
+        return $html;
     }
 
     /**

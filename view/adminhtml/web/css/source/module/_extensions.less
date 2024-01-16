@@ -43,12 +43,31 @@
     }
 
     a.btn-guide.magerocket-button::before {
-        content: "";
-        background: @magerocket__guide_icon;
+        content: '';
+        background-image: @magerocket__guide_icon;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
         display: block;
         position: absolute;
         width: 20px;
         height: 20px;
+    }
+
+    a.btn-feature.magerocket-button::before {
+        content: '';
+        background-image: @magerocket__headset_icon;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-feature > span {
+        margin-left: 25px;
     }
 
     .btn-guide > span {
