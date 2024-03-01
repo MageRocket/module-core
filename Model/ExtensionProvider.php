@@ -1,8 +1,8 @@
 <?php
 /**
- *  @author MageRocket
- *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
- *  @link https://magerocket.com/
+ * @author MageRocket
+ * @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
+ * @link https://magerocket.com/
  */
 
 namespace MageRocket\Core\Model;
@@ -31,33 +31,37 @@ class ExtensionProvider
     public function __construct(
         Json $serializer,
         Webservice $webservice
-    )
-    {
+    ) {
         $this->serializer = $serializer;
         $this->webservice = $webservice;
     }
 
     /**
-     * @param $module
-     * @return void
+     * Check Module Updates
+     *
+     * @param string $module
+     * @return array
      */
-    public function checkModuleUpdates($module)
+    public function checkModuleUpdates(string $module)
     {
         $requestData = [];
         $requestData['headers'] = [
-            "Content-Type" => "application/json"
+            "Content-Type" => "application/json",
+            "User-Agent"   => "MageRocketCore/1.0"
         ];
         $endpoint = self::MAGEROCKET_UPDATE_ENDPOINT . "/$module";
         $magerocketResponse = $this->webservice->doRequest($endpoint, $requestData, "GET");
-        $responseBody = $this->unserializeData($magerocketResponse->getBody()->getContents());
-        if ($magerocketResponse->getStatusCode() > 201) {
+        if ($magerocketResponse->getStatusCode() > 201 ||
+            strpos($magerocketResponse->getHeader('content-type')[0], 'application/json') === false
+        ) {
             return ['version' => '1.0.0'];
         }
-        return $responseBody;
+        return $this->unserializeData($magerocketResponse->getBody()->getContents());
     }
 
     /**
-     * serializeData
+     * Serialize Data
+     *
      * @param $data
      * @return bool|string
      */
@@ -67,7 +71,8 @@ class ExtensionProvider
     }
 
     /**
-     * unserializeData
+     * Unserialize Data
+     *
      * @param $data
      * @return bool|string
      */

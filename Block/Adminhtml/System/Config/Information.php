@@ -1,8 +1,8 @@
 <?php
 /**
- *  @author MageRocket
- *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
- *  @link https://magerocket.com/
+ * @author MageRocket
+ * @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
+ * @link https://magerocket.com/
  */
 
 namespace MageRocket\Core\Block\Adminhtml\System\Config;
@@ -21,6 +21,21 @@ class Information extends Fieldset
      * @var string $moduleCode
      */
     protected string $moduleCode = 'MageRocket_Core';
+
+    /**
+     * @var string $moduleLogo
+     */
+    protected string $moduleLogo = '';
+
+    /**
+     * @var string $moduleName
+     */
+    protected string $moduleName = '';
+
+    /**
+     * @var string $moduleDescription
+     */
+    protected string $moduleDescription = '';
 
     /**
      * @var bool $allowFeatureRequest
@@ -122,5 +137,62 @@ class Information extends Fieldset
     public function showButtonFeatureRequest(): bool
     {
         return $this->allowFeatureRequest;
+    }
+
+    /**
+     * getModuleName
+     * @return string
+     */
+    public function getModuleName(): string
+    {
+        return $this->moduleName;
+    }
+
+    /**
+     * setModuleName
+     * @param string $moduleName
+     * @return void
+     */
+    public function setModuleName(string $moduleName): void
+    {
+        $this->moduleName = $moduleName;
+    }
+
+    /**
+     * getModuleLogo
+     * @return string
+     */
+    public function getModuleLogo(): string
+    {
+        return $this->moduleLogo;
+    }
+
+    /**
+     * setModuleLogo
+     * @param string $moduleLogo
+     * @return void
+     */
+    public function setModuleLogo(string $moduleLogo): void
+    {
+        $this->moduleLogo = $moduleLogo;
+    }
+
+    /**
+     * getModuleDescription
+     * @return string
+     */
+    public function getModuleDescription(): string
+    {
+        return $this->moduleDescription;
+    }
+
+    /**
+     * setModuleDescription
+     * @param string $moduleDescription
+     * @return void
+     */
+    public function setModuleDescription(string $moduleDescription): void
+    {
+        $this->moduleDescription = $moduleDescription;
     }
 }

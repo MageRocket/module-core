@@ -1,8 +1,8 @@
 <?php
 /**
- *  @author MageRocket
- *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
- *  @link https://magerocket.com/
+ * @author MageRocket
+ * @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
+ * @link https://magerocket.com/
  */
 
 namespace MageRocket\Core\Observer;
@@ -82,7 +82,6 @@ class InformationTab implements ObserverInterface
     private function generateBlockContent(): string
     {
         $html = '<div class="magerocket-block-container">';
-        $html .= $this->showModuleMode();
         $html .= $this->showVersionInfo();
         $html .= $this->getMageRocketActions();
         $html .= '</div>';
@@ -96,8 +95,10 @@ class InformationTab implements ObserverInterface
     private function showVersionInfo(): string
     {
         $html = '<div class="magerocket-module-info">';
+        $html .= $this->getModuleInfo();
+        $html .= $this->showModuleMode();
         $needUpdate = $this->needUpdate();
-        if($needUpdate){
+        if ($needUpdate) {
             $html .=
                 '<span class="upgrade-error message message-warning">'
                 . __('Updates are available. We recommend updating as soon as possible')
@@ -113,17 +114,16 @@ class InformationTab implements ObserverInterface
      */
     private function getMageRocketActions(): string
     {
-        if(!$this->getBlock()->showButtonFeatureRequest() && !$this->getBlock()->getUserGuide()){
+        if (!$this->getBlock()->showButtonFeatureRequest() && !$this->getBlock()->getUserGuide()) {
             return '';
         }
-
         // Request Button
         $html = '<div class="magerocket-actions">';
-        if($this->getBlock()->showButtonFeatureRequest()){
+        if ($this->getBlock()->showButtonFeatureRequest()) {
             $html .= $this->getFeatureButton();
         }
         // Guide Button
-        if($this->getBlock()->getUserGuide()){
+        if ($this->getBlock()->getUserGuide()) {
             $html .= $this->getGuideButton($this->getBlock()->getUserGuide());
         }
         $html .= '</div>';
@@ -169,8 +169,8 @@ class InformationTab implements ObserverInterface
     private function getLinkSeo(string $link, string $campaign = 'user_guide'):string
     {
         if ($link) {
-            if(str_contains($campaign, '%s')){
-                $moduleName = $this->getBlock()->getModuleName();
+            if (str_contains($campaign, '%s')) {
+                $moduleName = $this->getBlock()->getModuleCode();
                 $campaign = sprintf($campaign, $moduleName);
             }
             $link .= sprintf(self::SEO_PARAMS, $campaign);
@@ -212,12 +212,10 @@ class InformationTab implements ObserverInterface
         $data = $this->moduleInfoProvider->getModuleInfo($this->getModuleCode());
         $moduleMode = $data['extra']['dev'] ?? false;
         $html = "";
-        if($moduleMode){
-            $html .= '<div class="magerocket-module-info">';
+        if ($moduleMode) {
             $html .= '<span class="upgrade-error message message-warning">';
             $html .= __('<b>ATTENTION</b>: The installed module corresponds to a development version.');
             $html .= '</span>';
-            $html .= '</div>';
         }
         return $html;
     }
@@ -247,5 +245,29 @@ class InformationTab implements ObserverInterface
     private function getModuleLink()
     {
         return $this->block->getModulePage();
+    }
+
+    /**
+     * @return string
+     */
+    private function getModuleInfo()
+    {
+        $moduleInfo = '';
+        $moduleName = $this->block->getModuleName();
+        $moduleLogo = $this->block->getModuleLogo();
+        $moduleDescription = $this->block->getModuleDescription();
+        // Set Title
+        if ($moduleName && !$moduleLogo) {
+            $moduleInfo .= "<h1>$moduleName</h1>";
+        }
+        // Set Logo
+        if ($moduleLogo && !$moduleName) {
+            $moduleInfo .= "<img src='$moduleLogo'/>";
+        }
+        // Set Description
+        if ($moduleDescription) {
+            $moduleInfo .= "<p>$moduleDescription</p>";
+        }
+        return $moduleInfo;
     }
 }

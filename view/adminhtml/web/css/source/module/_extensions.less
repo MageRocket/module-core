@@ -1,11 +1,10 @@
 /*
- *  @author MageRocket
- *  @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
- *  @link https://magerocket.com/
+ * @author MageRocket
+ * @copyright Copyright (c) 2024 MageRocket (https://magerocket.com/)
+ * @link https://magerocket.com/
  */
 
 & when (@media-common = true) {
-    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
     .magerocket .title:before {
         background-image: @magerocket__tabs-logo;
         background-size: 151px 30px;
@@ -90,6 +89,30 @@
                 display: flex;
                 margin-top: 25px;
             }
+        }
+    }
+
+    .magerocket-module-info{
+        line-height: 0;
+        font-weight: 600;
+
+        h1 {
+            font-weight: 800;
+            color: @magerocket__black__color;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            margin-bottom: 5px;
         }
     }
 }

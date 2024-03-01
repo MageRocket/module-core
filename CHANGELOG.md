@@ -1,12 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.1] - 2024-01-15
+## [1.0.3] - 2024-02-10
+
+### Added
+- Extend Core Functions
+
+## [1.0.2] - 2024-01-25
 
 ### Fixed
-- Core Tab - Module composer version
-- GuzzleHttp Change min version 6.x || 7.x
-- PHP Requires
+- Core assets
 
 ## [1.0.1] - 2024-01-09
 

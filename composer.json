@@ -1,6 +1,6 @@
 {
   "name": "magerocket/module-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MageRocket Core",
   "type": "magento2-module",
   "require": {
