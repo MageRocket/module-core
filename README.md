@@ -1,8 +1,7 @@
 <div align="center">
     <br>
     <a href="https://magerocket.com">
-        <img alt="MageRocket" src="https://magerocket.com/assets/logo.png" width="250"/>    
-    </a>
+<img alt="MageRocket" src="https://magerocket.com/assets/logo.png" width="250"/>    </a>
     <p align="center">MageRocket Core</p>
     <img src="https://img.shields.io/badge/magento-2.4-brightgreen.svg?logo=magento&longCache=true&style=flat-square" alt="Supported Magento Versions"/>
     <a href="https://packagist.org/packages/magerocket/module-core" target="_blank"><img src="https://img.shields.io/packagist/v/magerocket/module-core.svg?style=flat-square" alt="Latest Stable Version"/></a>
