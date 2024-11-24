@@ -47,7 +47,7 @@ class ExtensionProvider
         $requestData = [];
         $requestData['headers'] = [
             "Content-Type" => "application/json",
-            "User-Agent"   => "MageRocketCore/1.0"
+            "User-Agent"   => "MageRocketCore/1.5"
         ];
         $endpoint = self::MAGEROCKET_UPDATE_ENDPOINT . "/$module";
         $magerocketResponse = $this->webservice->doRequest($endpoint, $requestData, "GET");

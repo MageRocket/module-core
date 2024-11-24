@@ -146,8 +146,7 @@ class InformationTab implements ObserverInterface
      */
     private function getGuideButton($guide): string
     {
-        $guideLink = $this->getLinkSeo($guide);
-        return vsprintf(self::MAGEROCKET_BUTTON, [$guideLink,'btn-guide',__("User Guide")]);
+        return vsprintf(self::MAGEROCKET_BUTTON, [$guide,'btn-guide',__("User Guide")]);
     }
 
     /**
@@ -156,8 +155,7 @@ class InformationTab implements ObserverInterface
      */
     private function getFeatureButton(): string
     {
-        $featureLink = $this->getLinkSeo(self::FEATURE_LINK, 'module_%s');
-        return vsprintf(self::MAGEROCKET_BUTTON, [$featureLink,'btn-feature',__("Request New Feature")]);
+        return vsprintf(self::MAGEROCKET_BUTTON, [self::FEATURE_LINK,'btn-feature',__("Request New Feature")]);
     }
 
     /**
@@ -171,9 +169,9 @@ class InformationTab implements ObserverInterface
         if ($link) {
             if (str_contains($campaign, '%s')) {
                 $moduleName = $this->getBlock()->getModuleCode();
-                $campaign = sprintf($campaign, $moduleName);
+                $campaign = '';
             }
-            $link .= sprintf(self::SEO_PARAMS, $campaign);
+            $link .= '';
         }
         return $link;
     }

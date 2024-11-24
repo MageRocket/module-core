@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2024-11-25
+
+- The general menu and settings section under Stores > Config are reorganized.
+
 ## [1.0.4] - 2024-04-22
 
 ### Updated

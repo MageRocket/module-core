@@ -19,7 +19,7 @@ class Guides extends Action
     public function execute()
     {
         $this->_response->setRedirect(
-            'https://docs.magerocket.com/?utm_source=sidebar&utm_medium=link&utm_content=user-guide'
+            'https://docs.magerocket.com/'
         );
     }
 }
